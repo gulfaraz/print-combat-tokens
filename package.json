@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
+    "start:pdf": "ts-node src/pdf.ts",
     "typecheck": "tsc --noEmit",
     "build": "tsc",
     "format": "prettier --write src/**/*.ts"
@@ -15,7 +16,8 @@
   "author": "",
   "dependencies": {
     "@notionhq/client": "^2.0.0",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "pdf-creator-node": "^2.3.5"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
