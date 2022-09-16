@@ -28,7 +28,10 @@
       }
 
       .token {
-        object-fit: contain;
+        background-color: #fff;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         overflow: hidden;
         vertical-align: top;
         width: 96px;
@@ -116,5 +119,8 @@
 </html>
 
 {{#*inline "token"}}
-<img class="token {{this.colour}} {{this.size}}" src="{{this.avatar}}" />
+<div
+  class="token {{this.colour}} {{this.size}}"
+  style="background-image: url('{{this.avatar}}')"
+></div>
 {{/inline}}
