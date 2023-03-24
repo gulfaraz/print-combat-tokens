@@ -15,15 +15,15 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "@notionhq/client": "^2.2.0",
-    "dotenv": "^16.0.2",
+    "@notionhq/client": "^2.2.3",
+    "dotenv": "^16.0.3",
     "pdf-creator-node": "^2.3.5"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
-    "@types/node": "^18.7.21",
     "prettier": "^2.8.4",
+    "@types/node": "^18.14.6",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.3"
+    "typescript": "^4.9.5"
   }
 }
