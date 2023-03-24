@@ -8,14 +8,14 @@ let count = 0;
 
 const getColour = () => {
   const colours = [
-    "gray",
-    "orange",
-    "blue",
-    "green",
-    "yellow",
-    "cerulean",
-    "tenn",
-    "pink",
+    "#999999", // "gray",
+    "#e69f00", // "orange",
+    "#56b4e9", // "blue",
+    "#009e73", // "green",
+    "#f0e442", // "yellow",
+    "#0072b2", // "cerulean",
+    "#d55e00", // "tenn",
+    "#cc79a7", // "pink",
   ];
 
   const colour = colours[count++];
@@ -35,24 +35,27 @@ const getProperty = async (notion: Client, page: any, propertyName: string) => {
 
   let propertyValue = property[property.type];
 
-  if ("Avatar" == propertyName) {
+  if ("Image" == propertyName) {
     propertyValue = property[property.type][0].external.url;
   } else if ("Size" == propertyName) {
-    propertyValue = property[property.type].name.toLowerCase();
+    propertyValue = property[property.type].name;
+  } else if ("Zoom" == propertyName) {
+    propertyValue = property[property.type] * 100;
   }
 
   return propertyValue;
 };
 
-const getMonsterAvatar = async (notion: Client, monsterPageId: any) => {
+const getMonsterImage = async (notion: Client, monsterPageId: any) => {
   const monsterPage = await notion.pages.retrieve({ page_id: monsterPageId });
 
-  const avatar = await getProperty(notion, monsterPage, "Avatar");
+  const image = await getProperty(notion, monsterPage, "Image");
   const size = await getProperty(notion, monsterPage, "Size");
+  const zoom = await getProperty(notion, monsterPage, "Zoom");
 
-  const avatars = [{ avatar, size }];
+  const images = [{ image, size, zoom }];
 
-  return avatars;
+  return images;
 };
 
 const getMonsters = async (notion: Client, page: any) => {
@@ -65,14 +68,14 @@ const getMonsters = async (notion: Client, page: any) => {
     })) as any
   ).results;
 
-  const monsterAvatars = await Promise.all(
+  const monsterImages = await Promise.all(
     monsterPages.map(
       async (monsterPage: any) =>
-        await getMonsterAvatar(notion, monsterPage.relation.id)
+        await getMonsterImage(notion, monsterPage.relation.id)
     )
   );
 
-  return monsterAvatars;
+  return monsterImages;
 };
 
 const getTokens = async (notion: Client, tokenPages: any[]) => {
