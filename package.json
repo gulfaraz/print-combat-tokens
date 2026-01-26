@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/dotenv": "^8.2.3",
     "prettier": "^3.8.0",
-    "@types/node": "^25.0.9",
+    "@types/node": "^25.0.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
